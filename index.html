@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR" class="h-full bg-amber-50/50">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dra. Josicléia Rodrigues | Consultório Odontológico</title>
+    <title>Farmácia BIGMED | Cuidando da sua saúde - Link na Bio</title>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,818 +12,535 @@
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            DEFAULT: '#d84268',
-                            hover: '#b83253',
-                            light: '#fdf2f4',
-                            border: '#f8b3c5'
+                        bigmed: {
+                            yellow: '#FACC15',
+                            yellowDark: '#EAB308',
+                            red: '#DC2626',
+                            redDark: '#B91C1C',
+                            green: '#15803D',
+                            greenDark: '#166534',
+                            bg: '#FEFCE8'
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif']
+                        sans: ['Inter', 'sans-serif']
                     }
                 }
             }
         }
     </script>
 
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Google Fonts -->
+    <!-- Google Fonts & FontAwesome Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Custom CSS Styles -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fcfcfc;
-            color: #1a1a1a;
             -webkit-tap-highlight-color: transparent;
         }
-
-        .font-brand-serif {
-            font-family: 'Playfair Display', serif;
+        
+        /* Pulse & Hover animation transitions */
+        .btn-bounce {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-bounce:active {
+            transform: scale(0.97);
+        }
+        .pulse-subtle {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.03); opacity: 0.9; }
         }
 
-        .gradient-pink-soft {
-            background: linear-gradient(180deg, #fdf2f4 0%, #ffffff 100%);
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
         }
-
-        .shadow-soft {
-            box-shadow: 0 10px 25px -5px rgba(216, 66, 104, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
         }
-
-        .shadow-hover:hover {
-            box-shadow: 0 15px 30px -5px rgba(216, 66, 104, 0.15), 0 10px 15px -5px rgba(0, 0, 0, 0.04);
-            transform: translateY(-2px);
-        }
-
-        .btn-touch-active:active {
-            transform: scale(0.98);
-        }
-
-        /* Glassmorphism subtle effects */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(216, 66, 104, 0.12);
-        }
-
-        /* Custom radio step button selection */
-        .option-card {
-            transition: all 0.2s ease-in-out;
-        }
-        .option-card.selected {
-            border-color: #d84268;
-            background-color: #fdf2f4;
-            color: #d84268;
+        ::-webkit-scrollbar-thumb {
+            background: #eab308;
+            border-radius: 10px;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between items-center text-black bg-slate-50 antialiased selection:bg-rose-100 selection:text-brand">
+<body class="min-h-full flex flex-col items-center justify-between text-slate-800 antialiased selection:bg-red-500 selection:text-white pb-12">
 
-    <!-- Main Container - Mobile First Max-W-MD for Instagram Bio Feel -->
-    <main class="w-full max-w-md mx-auto px-4 py-5 flex-grow flex flex-col space-y-6">
+    <script>
+        // CONFIGURAÇÕES DA FARMÁCIA (Editável facilmente)
+        window.BIGMED_CONFIG = {
+            nome: "Farmácia BIGMED",
+            slogan: "Cuidando da sua saúde.",
+            subtitulo: "Sua saúde e seu bem-estar em boas mãos. Escolha uma das opções abaixo para iniciar o atendimento rápido.",
+            whatsappPhone: "5582996402650", // Número formatado com código de país e DDD
+            formattedPhone: "(82) 99640-2650",
+            telefoneFixo: "(82) 99640-2650",
+            endereco: "Av. Principal da Saúde, 1000 - Centro",
+            cidade: "Maceió - AL",
+            horarioFuncionamento: "Segunda a Sábado: 07h às 22h | Domingos e Feriados: 08h às 18h",
+            instagram: "@farmaciabigmed",
+            mapsUrl: "https://maps.google.com/?q=Farmacia+BIGMED",
+            maxFileSizeMB: 10
+        };
+    </script>
 
-        <!-- SEÇÃO 1: CABEÇALHO PROFISSIONAL -->
-        <header class="text-center pt-2 pb-1 space-y-3">
-            <!-- Profile Avatar / Brand Logo Frame -->
-            <div class="relative inline-block">
-                <div class="w-24 h-24 rounded-full p-1 ring-2 ring-brand/30 bg-white shadow-md mx-auto flex items-center justify-center overflow-hidden">
-                    <img src="https://placehold.co/200x200/fdf2f4/d84268?text=Dra.+Josicleia" 
-                         alt="Dra. Josicléia Rodrigues" 
-                         class="w-full h-full object-cover rounded-full"
-                         onerror="this.src='https://placehold.co/200x200/fdf2f4/d84268?text=Dra.+JR'">
+    <header class="w-full bg-gradient-to-b from-yellow-300 via-amber-300 to-amber-100/60 pb-8 pt-8 px-4 text-center rounded-b-3xl shadow-sm border-b border-amber-200/60 relative overflow-hidden max-w-md mx-auto">
+        <!-- Decorative subtle pills pattern in background -->
+        <div class="absolute -top-10 -left-10 w-28 h-28 bg-yellow-200/40 rounded-full blur-xl pointer-events-none"></div>
+        <div class="absolute -top-10 -right-10 w-28 h-28 bg-red-300/20 rounded-full blur-xl pointer-events-none"></div>
+
+        <div class="relative z-10 flex flex-col items-center">
+            <!-- Brand Logo SVG Recreation (Accurate to BIGMED Logo Design) -->
+            <div class="bg-yellow-400 p-4 rounded-3xl shadow-lg border-4 border-white mb-3 max-w-[220px] w-full flex flex-col items-center justify-center transform transition duration-300 hover:scale-105">
+                <!-- SVG Icon Mascot representation -->
+                <div class="relative w-16 h-16 mb-1">
+                    <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-md">
+                        <!-- Pill Body -->
+                        <path d="M 30,35 Q 30,15 50,15 Q 70,15 70,35 L 70,65 Q 70,85 50,85 Q 30,85 30,65 Z" fill="#DC2626" />
+                        <path d="M 30,35 Q 30,15 50,15 Q 70,15 70,35 L 70,50 L 30,50 Z" fill="#FACC15" />
+                        <!-- Eyes & Smile -->
+                        <circle cx="43" cy="32" r="3" fill="#1E293B" />
+                        <circle cx="57" cy="32" r="3" fill="#1E293B" />
+                        <path d="M 42,40 Q 50,46 58,40" fill="none" stroke="#1E293B" stroke-width="2.5" stroke-linecap="round" />
+                        <!-- Cap -->
+                        <path d="M 35,18 C 45,8 55,8 65,18 L 72,20 C 60,15 40,15 28,20 Z" fill="#D97706" />
+                        <!-- Arms raised -->
+                        <path d="M 30,45 Q 15,35 12,25 M 12,25 L 18,22 M 12,25 L 14,31" stroke="#FACC15" stroke-width="4" stroke-linecap="round" fill="none" />
+                        <path d="M 70,45 Q 85,35 88,25 M 88,25 L 82,22 M 88,25 L 86,31" stroke="#FACC15" stroke-width="4" stroke-linecap="round" fill="none" />
+                        <!-- Shoes -->
+                        <ellipse cx="38" cy="87" rx="8" ry="4" fill="#334155" />
+                        <ellipse cx="62" cy="87" rx="8" ry="4" fill="#334155" />
+                    </svg>
                 </div>
-                <span class="absolute bottom-0 right-1 bg-emerald-500 w-4 h-4 rounded-full border-2 border-white shadow-sm" title="Consultório Aberto"></span>
+                <!-- Brand Text Logo matching colors -->
+                <div class="text-xs font-black tracking-widest text-slate-900 uppercase -mb-1">FARMÁCIA</div>
+                <div class="flex text-3xl font-black tracking-tight leading-none drop-shadow-sm">
+                    <span class="text-red-600">BIG</span>
+                    <span class="text-emerald-700">MED</span>
+                </div>
+                <div class="text-[10px] font-semibold text-slate-800 italic mt-0.5">Cuidando da sua saúde.</div>
             </div>
 
-            <!-- Text Logo & Professional Title -->
-            <div>
-                <h1 class="font-brand-serif text-2xl font-bold tracking-tight text-black">
-                    Dra. Josicléia Rodrigues
-                </h1>
-                <p class="text-xs uppercase tracking-widest font-semibold text-brand mt-0.5">
-                    Consultório Odontológico
-                </p>
-                <p class="text-xs text-gray-600 flex items-center justify-center gap-1 mt-1 font-medium">
-                    <i class="fa-solid fa-location-dot text-brand"></i>
-                    São Miguel dos Milagres — AL
-                </p>
+            <!-- Status Pill Badge -->
+            <div id="statusBadge" class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-100 border border-emerald-300 rounded-full text-xs font-medium text-emerald-800 mb-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Aberto agora • Atendimento Online</span>
             </div>
 
-            <!-- Academic Badges / Credentials -->
-            <div class="flex flex-wrap justify-center gap-1.5 pt-1 text-[11px] font-medium text-gray-700">
-                <span class="bg-white px-2.5 py-1 rounded-full border border-gray-200 shadow-sm flex items-center gap-1">
-                    <i class="fa-solid fa-graduation-cap text-brand"></i> Mestranda em Periodontia
-                </span>
-                <span class="bg-white px-2.5 py-1 rounded-full border border-gray-200 shadow-sm flex items-center gap-1">
-                    <i class="fa-solid fa-tooth text-brand"></i> Cirurgia Peri-implantar
-                </span>
-                <span class="bg-white px-2.5 py-1 rounded-full border border-gray-200 shadow-sm flex items-center gap-1">
-                    <i class="fa-solid fa-wand-magic-sparkles text-brand"></i> Pós em Harmonização Orofacial
-                </span>
-            </div>
-        </header>
+            <p class="text-xs sm:text-sm text-slate-700 font-medium max-w-xs mt-1 leading-relaxed" id="headerSubtitle">
+                Sua saúde e seu bem-estar em boas mãos. Selecione o canal ideal abaixo:
+            </p>
+        </div>
+    </header>
 
-        <!-- SEÇÃO 2: FORMULÁRIO DE CAPTAÇÃO DE LEADS (NO INÍCIO) -->
-        <section class="glass-card rounded-2xl p-5 shadow-soft border border-brand/20 relative overflow-hidden">
-            <!-- Header of Lead Form -->
-            <div class="text-center mb-4">
-                <span class="inline-block bg-brand/10 text-brand text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider mb-1">
-                    Atendimento Rápido
-                </span>
-                <h2 class="text-lg font-bold text-gray-900 leading-snug">
-                    Como podemos ajudar você hoje?
-                </h2>
-                <p class="text-xs text-gray-600 mt-1">
-                    Conte o que você procura e encontre o melhor caminho para entrar em contato com nosso consultório.
-                </p>
-            </div>
+    <main class="w-full max-w-md px-4 mt-6 flex-1 flex flex-col gap-3.5">
 
-            <!-- Progress Bar -->
-            <div class="w-full bg-gray-100 h-1.5 rounded-full mb-5 overflow-hidden">
-                <div id="progressBar" class="bg-brand h-full w-1/3 transition-all duration-300 ease-out"></div>
-            </div>
-
-            <!-- Lead Form Wizard -->
-            <form id="leadForm" onsubmit="event.preventDefault();" class="space-y-4">
-
-                <!-- ETAPA 1: Identificação -->
-                <div id="step1" class="step-content space-y-4">
-                    <div class="flex items-center justify-between text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                        <span>Etapa 1 de 3</span>
-                        <span class="text-brand">Identificação</span>
+        <!-- Destacado: Enviar Receita Médica -->
+        <button onclick="openPrescriptionModal()" class="btn-bounce pulse-subtle group relative w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-2xl p-4 shadow-md shadow-red-200 border border-red-500/30 flex items-center justify-between text-left">
+            <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-file-medical text-white"></i>
+                </div>
+                <div>
+                    <div class="font-bold text-base leading-snug flex items-center gap-2">
+                        Enviar Receita Médica
+                        <span class="bg-amber-300 text-slate-900 text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">Rápido</span>
                     </div>
+                    <div class="text-xs text-red-100 font-normal">Anexe seu arquivo e receba seu orçamento</div>
+                </div>
+            </div>
+            <i class="fa-solid fa-chevron-right text-red-200 group-hover:translate-x-1 transition-transform"></i>
+        </button>
 
+        <!-- WhatsApp Direto -->
+        <a id="btnWhatsapp" href="#" target="_blank" rel="noopener font-medium" class="btn-bounce group w-full bg-emerald-600 hover:bg-emerald-700 text-white rounded-2xl p-4 shadow-sm border border-emerald-500/30 flex items-center justify-between text-left">
+            <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-brands fa-whatsapp text-white"></i>
+                </div>
+                <div>
+                    <div class="font-bold text-base leading-snug">Falar pelo WhatsApp</div>
+                    <div class="text-xs text-emerald-100 font-normal">Tire dúvidas e faça pedidos diretamente com o farmacêutico</div>
+                </div>
+            </div>
+            <i class="fa-solid fa-chevron-right text-emerald-200 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+
+        <!-- Consultar Disponibilidade de Medicamentos -->
+        <a id="btnDisponibilidade" href="#" target="_blank" class="btn-bounce group w-full bg-white hover:bg-slate-50 text-slate-800 rounded-2xl p-4 shadow-sm border border-slate-200 flex items-center justify-between text-left">
+            <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-pills"></i>
+                </div>
+                <div>
+                    <div class="font-bold text-base text-slate-900 leading-snug">Consultar Medicamentos</div>
+                    <div class="text-xs text-slate-500">Verifique se o seu remédio está disponível em estoque</div>
+                </div>
+            </div>
+            <i class="fa-solid fa-chevron-right text-slate-400 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+
+        <!-- Como Chegar / Localização -->
+        <a id="btnMaps" href="#" target="_blank" class="btn-bounce group w-full bg-white hover:bg-slate-50 text-slate-800 rounded-2xl p-4 shadow-sm border border-slate-200 flex items-center justify-between text-left">
+            <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                    <div class="font-bold text-base text-slate-900 leading-snug">Como Chegar</div>
+                    <div class="text-xs text-slate-500">Abrir localização no Google Maps</div>
+                </div>
+            </div>
+            <i class="fa-solid fa-chevron-right text-slate-400 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+
+        <!-- Instagram Oficial -->
+        <a id="btnInstagram" href="#" target="_blank" class="btn-bounce group w-full bg-white hover:bg-slate-50 text-slate-800 rounded-2xl p-4 shadow-sm border border-slate-200 flex items-center justify-between text-left">
+            <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+                <div>
+                    <div class="font-bold text-base text-slate-900 leading-snug">Nosso Instagram</div>
+                    <div class="text-xs text-slate-500">Dicas de saúde, ofertas e novidades em <span id="instaHandle">@farmaciabigmed</span></div>
+                </div>
+            </div>
+            <i class="fa-solid fa-chevron-right text-slate-400 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+
+        <!-- Ligar para a Farmácia -->
+        <a id="btnCall" href="tel:" class="btn-bounce group w-full bg-white hover:bg-slate-50 text-slate-800 rounded-2xl p-4 shadow-sm border border-slate-200 flex items-center justify-between text-left">
+            <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <div>
+                    <div class="font-bold text-base text-slate-900 leading-snug">Ligar para a Loja</div>
+                    <div class="text-xs text-slate-500" id="phoneText">(82) 99640-2650</div>
+                </div>
+            </div>
+            <i class="fa-solid fa-chevron-right text-slate-400 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+
+        <!-- Horário de Funcionamento Accordion Card -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
+            <div class="flex items-center gap-3 mb-2">
+                <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center text-sm font-bold">
+                    <i class="fa-regular fa-clock"></i>
+                </div>
+                <h3 class="font-bold text-slate-900 text-sm">Horário de Atendimento</h3>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed pl-1" id="hoursText">
+                Segunda a Sábado: 07h às 22h<br>
+                Domingos e Feriados: 08h às 18h
+            </p>
+        </div>
+
+        <div class="mt-4">
+            <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 px-1 flex items-center gap-2">
+                <i class="fa-solid fa-star text-amber-500"></i> Nossos Serviços e Categorias
+            </h2>
+            <div class="grid grid-cols-2 gap-2.5">
+                <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-xs flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-red-50 text-red-600 flex items-center justify-center text-sm shrink-0">
+                        <i class="fa-solid fa-user-doctor"></i>
+                    </div>
                     <div>
-                        <label for="patientName" class="block text-xs font-medium text-gray-700 mb-1">
-                            Seu Nome Completo <span class="text-brand">*</span>
-                        </label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                                <i class="fa-regular fa-user"></i>
-                            </span>
-                            <input type="text" id="patientName" required
-                                placeholder="Digite seu nome aqui" 
-                                class="w-full pl-9 pr-3 py-2.5 text-sm rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all">
-                        </div>
-                        <p id="nameError" class="text-[11px] text-red-500 mt-1 hidden">Por favor, informe seu nome para continuar.</p>
+                        <div class="font-semibold text-xs text-slate-800">Atenção Farmacêutica</div>
                     </div>
+                </div>
 
+                <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-xs flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm shrink-0">
+                        <i class="fa-solid fa-capsules"></i>
+                    </div>
                     <div>
-                        <label class="block text-xs font-medium text-gray-700 mb-1">
-                            Preferência de Atendimento:
-                        </label>
-                        <div class="flex items-center gap-2 p-2.5 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-800 text-xs font-medium">
-                            <i class="fa-brands fa-whatsapp text-emerald-600 text-base"></i>
-                            <span>Atendimento direto pelo WhatsApp Oficial</span>
-                        </div>
-                    </div>
-
-                    <button type="button" onclick="nextStep(1)" 
-                        class="w-full bg-brand hover:bg-brand-hover text-white font-semibold py-3 px-4 rounded-xl shadow-md transition duration-200 flex items-center justify-center gap-2 text-sm btn-touch-active">
-                        <span>Avançar</span>
-                        <i class="fa-solid fa-arrow-right text-xs"></i>
-                    </button>
-                </div>
-
-                <!-- ETAPA 2: Interesse no Atendimento -->
-                <div id="step2" class="step-content space-y-4 hidden">
-                    <div class="flex items-center justify-between text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                        <span>Etapa 2 de 3</span>
-                        <span class="text-brand">Área de Interesse</span>
-                    </div>
-
-                    <p class="text-xs text-gray-700 font-medium">Qual serviço você gostaria de consultar?</p>
-
-                    <div class="space-y-2">
-                        <label class="option-card flex items-center justify-between p-3 rounded-xl border border-gray-200 cursor-pointer hover:border-brand/50">
-                            <div class="flex items-center gap-2.5">
-                                <i class="fa-solid fa-teeth text-brand/80"></i>
-                                <span class="text-xs font-medium">Periodontia</span>
-                            </div>
-                            <input type="radio" name="serviceInterest" value="Periodontia" class="accent-brand hidden" onchange="highlightOption(this)">
-                            <i class="fa-regular fa-circle text-gray-300 check-icon"></i>
-                        </label>
-
-                        <label class="option-card flex items-center justify-between p-3 rounded-xl border border-gray-200 cursor-pointer hover:border-brand/50">
-                            <div class="flex items-center gap-2.5">
-                                <i class="fa-solid fa-tooth text-brand/80"></i>
-                                <span class="text-xs font-medium">Cirurgia Peri-implantar</span>
-                            </div>
-                            <input type="radio" name="serviceInterest" value="Cirurgia Peri-implantar" class="accent-brand hidden" onchange="highlightOption(this)">
-                            <i class="fa-regular fa-circle text-gray-300 check-icon"></i>
-                        </label>
-
-                        <label class="option-card flex items-center justify-between p-3 rounded-xl border border-gray-200 cursor-pointer hover:border-brand/50">
-                            <div class="flex items-center gap-2.5">
-                                <i class="fa-solid fa-wand-magic-sparkles text-brand/80"></i>
-                                <span class="text-xs font-medium">Harmonização Orofacial</span>
-                            </div>
-                            <input type="radio" name="serviceInterest" value="Harmonização Orofacial" class="accent-brand hidden" onchange="highlightOption(this)">
-                            <i class="fa-regular fa-circle text-gray-300 check-icon"></i>
-                        </label>
-
-                        <label class="option-card flex items-center justify-between p-3 rounded-xl border border-gray-200 cursor-pointer hover:border-brand/50">
-                            <div class="flex items-center gap-2.5">
-                                <i class="fa-solid fa-notes-medical text-brand/80"></i>
-                                <span class="text-xs font-medium">Avaliação Odontológica</span>
-                            </div>
-                            <input type="radio" name="serviceInterest" value="Avaliação Odontológica" class="accent-brand hidden" onchange="highlightOption(this)">
-                            <i class="fa-regular fa-circle text-gray-300 check-icon"></i>
-                        </label>
-
-                        <label class="option-card flex items-center justify-between p-3 rounded-xl border border-gray-200 cursor-pointer hover:border-brand/50">
-                            <div class="flex items-center gap-2.5">
-                                <i class="fa-regular fa-comments text-brand/80"></i>
-                                <span class="text-xs font-medium">Outro atendimento</span>
-                            </div>
-                            <input type="radio" name="serviceInterest" value="Outro atendimento" class="accent-brand hidden" onchange="highlightOption(this)">
-                            <i class="fa-regular fa-circle text-gray-300 check-icon"></i>
-                        </label>
-                    </div>
-
-                    <p id="serviceError" class="text-[11px] text-red-500 hidden">Por favor, selecione uma opção para continuar.</p>
-
-                    <div class="flex gap-2 pt-1">
-                        <button type="button" onclick="prevStep(2)" 
-                            class="w-1/3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 rounded-xl text-xs transition border border-gray-200">
-                            Voltar
-                        </button>
-                        <button type="button" onclick="nextStep(2)" 
-                            class="w-2/3 bg-brand hover:bg-brand-hover text-white font-semibold py-3 rounded-xl shadow-md transition flex items-center justify-center gap-2 text-sm btn-touch-active">
-                            <span>Avançar</span>
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </button>
+                        <div class="font-semibold text-xs text-slate-800">Medicamentos</div>
                     </div>
                 </div>
 
-                <!-- ETAPA 3: Encaminhamento e LGPD -->
-                <div id="step3" class="step-content space-y-4 hidden">
-                    <div class="flex items-center justify-between text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                        <span>Etapa 3 de 3</span>
-                        <span class="text-brand">Finalidade</span>
+                <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-xs flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-sm shrink-0">
+                        <i class="fa-solid fa-pump-soap"></i>
                     </div>
-
-                    <p class="text-xs text-gray-700 font-medium">Qual seu objetivo principal neste primeiro contato?</p>
-
-                    <div class="space-y-2">
-                        <label class="option-card flex items-center justify-between p-3 rounded-xl border border-gray-200 cursor-pointer hover:border-brand/50">
-                            <div class="flex items-center gap-2.5">
-                                <i class="fa-regular fa-calendar-check text-brand"></i>
-                                <span class="text-xs font-medium">Agendar uma avaliação</span>
-                            </div>
-                            <input type="radio" name="contactGoal" value="Agendar uma avaliação" class="accent-brand hidden" onchange="highlightOption(this)">
-                            <i class="fa-regular fa-circle text-gray-300 check-icon"></i>
-                        </label>
-
-                        <label class="option-card flex items-center justify-between p-3 rounded-xl border border-gray-200 cursor-pointer hover:border-brand/50">
-                            <div class="flex items-center gap-2.5">
-                                <i class="fa-regular fa-circle-question text-brand"></i>
-                                <span class="text-xs font-medium">Tirar dúvidas sobre os tratamentos</span>
-                            </div>
-                            <input type="radio" name="contactGoal" value="Tirar dúvidas" class="accent-brand hidden" onchange="highlightOption(this)">
-                            <i class="fa-regular fa-circle text-gray-300 check-icon"></i>
-                        </label>
-                    </div>
-
-                    <p id="goalError" class="text-[11px] text-red-500 hidden">Selecione uma finalidade de contato.</p>
-
-                    <!-- LGPD Consent Checkbox -->
-                    <div class="pt-2 border-t border-gray-100">
-                        <label class="flex items-start gap-2 cursor-pointer">
-                            <input type="checkbox" id="lgpdConsent" required class="mt-0.5 accent-brand rounded">
-                            <span class="text-[11px] text-gray-600 leading-tight">
-                                Concordo com o tratamento dos meus dados (nome e interesse) para comunicação com o consultório, em conformidade com a LGPD.
-                            </span>
-                        </label>
-                        <p id="lgpdError" class="text-[11px] text-red-500 hidden mt-1">É necessário concordar com os termos para prosseguir.</p>
-                    </div>
-
-                    <!-- Final Action Button -->
-                    <div class="flex gap-2">
-                        <button type="button" onclick="prevStep(3)" 
-                            class="w-1/3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 rounded-xl text-xs transition border border-gray-200">
-                            Voltar
-                        </button>
-                        <button type="button" onclick="submitLeadForm()" 
-                            class="w-2/3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-xl shadow-md transition flex items-center justify-center gap-2 text-sm btn-touch-active">
-                            <i class="fa-brands fa-whatsapp text-lg"></i>
-                            <span>Continuar pelo WhatsApp</span>
-                        </button>
+                    <div>
+                        <div class="font-semibold text-xs text-slate-800">Higiene & Perfumaria</div>
                     </div>
                 </div>
-            </form>
-        </section>
 
-        <!-- SEÇÃO 3: PRINCIPAIS LINKS DE CONTATO -->
-        <section class="space-y-3">
-            <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-500 text-center mb-1">
-                Acesso Rápido
-            </h3>
-
-            <!-- Botão 1: Agendar Avaliação (WhatsApp) -->
-            <a id="btnAgendar" href="#" onclick="openDirectWhatsApp('Olá! Gostaria de agendar uma avaliação odontológica com a Dra. Josicléia Rodrigues.'); return false;" 
-               class="flex items-center justify-between p-4 bg-white rounded-2xl border border-gray-200 shadow-sm shadow-hover transition duration-200 group">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-lg group-hover:bg-emerald-600 group-hover:text-white transition">
-                        <i class="fa-brands fa-whatsapp"></i>
+                <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-xs flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-sm shrink-0">
+                        <i class="fa-solid fa-shield-halved"></i>
                     </div>
-                    <div class="text-left">
-                        <div class="text-sm font-bold text-gray-900">Agendar uma avaliação</div>
-                        <div class="text-xs text-gray-500">Horários e consultas pelo WhatsApp</div>
+                    <div>
+                        <div class="font-semibold text-xs text-slate-800">Vitaminas & Saúde</div>
                     </div>
-                </div>
-                <i class="fa-solid fa-chevron-right text-xs text-gray-400 group-hover:text-brand transition"></i>
-            </a>
-
-            <!-- Botão 2: Falar com o Consultório (WhatsApp) -->
-            <a id="btnDuvidas" href="#" onclick="openDirectWhatsApp('Olá! Gostaria de falar com a equipe do consultório da Dra. Josicléia Rodrigues para tirar dúvidas.'); return false;" 
-               class="flex items-center justify-between p-4 bg-white rounded-2xl border border-gray-200 shadow-sm shadow-hover transition duration-200 group">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-rose-100 text-brand flex items-center justify-center text-lg group-hover:bg-brand group-hover:text-white transition">
-                        <i class="fa-regular fa-comment-dots"></i>
-                    </div>
-                    <div class="text-left">
-                        <div class="text-sm font-bold text-gray-900">Falar com o consultório</div>
-                        <div class="text-xs text-gray-500">Tire suas dúvidas ou peça informações</div>
-                    </div>
-                </div>
-                <i class="fa-solid fa-chevron-right text-xs text-gray-400 group-hover:text-brand transition"></i>
-            </a>
-
-            <!-- Botão 3: Conhecer o Instagram -->
-            <a id="btnInstagram" href="#" onclick="openInstagramProfile(); return false;" 
-               class="flex items-center justify-between p-4 bg-white rounded-2xl border border-gray-200 shadow-sm shadow-hover transition duration-200 group">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white flex items-center justify-center text-lg">
-                        <i class="fa-brands fa-instagram"></i>
-                    </div>
-                    <div class="text-left">
-                        <div class="text-sm font-bold text-gray-900">Conhecer o Instagram</div>
-                        <div class="text-xs text-gray-500">Siga nosso perfil profissional</div>
-                    </div>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-400 group-hover:text-brand transition"></i>
-            </a>
-
-            <!-- Botão 4: Como Chegar (Google Maps) -->
-            <a id="btnMaps" href="#" onclick="openGoogleMaps(); return false;" 
-               class="flex items-center justify-between p-4 bg-white rounded-2xl border border-gray-200 shadow-sm shadow-hover transition duration-200 group">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-lg group-hover:bg-blue-600 group-hover:text-white transition">
-                        <i class="fa-solid fa-map-location-dot"></i>
-                    </div>
-                    <div class="text-left">
-                        <div class="text-sm font-bold text-gray-900">Como chegar</div>
-                        <div class="text-xs text-gray-500">São Miguel dos Milagres — AL</div>
-                    </div>
-                </div>
-                <i class="fa-solid fa-location-arrow text-xs text-gray-400 group-hover:text-brand transition"></i>
-            </a>
-
-            <!-- Botão 5: Conhecer os atendimentos -->
-            <a href="#atendimentos" 
-               class="flex items-center justify-between p-4 bg-white rounded-2xl border border-gray-200 shadow-sm shadow-hover transition duration-200 group">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-gray-100 text-gray-700 flex items-center justify-center text-lg group-hover:bg-gray-800 group-hover:text-white transition">
-                        <i class="fa-solid fa-list-check"></i>
-                    </div>
-                    <div class="text-left">
-                        <div class="text-sm font-bold text-gray-900">Conhecer os atendimentos</div>
-                        <div class="text-xs text-gray-500">Veja nossas especialidades</div>
-                    </div>
-                </div>
-                <i class="fa-solid fa-arrow-down text-xs text-gray-400 group-hover:text-brand transition"></i>
-            </a>
-        </section>
-
-        <!-- SEÇÃO 4: APRESENTAÇÃO DOS ATENDIMENTOS -->
-        <section id="atendimentos" class="pt-4 space-y-4 scroll-mt-6">
-            <div class="text-center">
-                <h2 class="font-brand-serif text-xl font-bold text-gray-900">
-                    Nossos Atendimentos
-                </h2>
-                <p class="text-xs text-gray-600 mt-1">
-                    Atendimento odontológico especializado focado no seu bem-estar
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 gap-3">
-                <!-- Card 1: Periodontia -->
-                <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm space-y-3 hover:border-brand/40 transition">
-                    <div class="flex items-start gap-3">
-                        <div class="p-2.5 bg-brand-light text-brand rounded-xl text-xl">
-                            <i class="fa-solid fa-teeth"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-bold text-gray-900">Periodontia</h3>
-                            <p class="text-xs text-gray-600 mt-1 leading-relaxed">
-                                Informações e orientações sobre cuidados periodontais, prevenção e avaliação especializada da saúde gengival e de suporte dos dentes.
-                            </p>
-                        </div>
-                    </div>
-                    <button onclick="selectServiceWhatsApp('Periodontia')" 
-                            class="w-full py-2 px-3 bg-brand/10 hover:bg-brand hover:text-white text-brand font-semibold text-xs rounded-xl transition flex items-center justify-center gap-1.5">
-                        <i class="fa-brands fa-whatsapp text-sm"></i>
-                        <span>Tenho interesse</span>
-                    </button>
-                </div>
-
-                <!-- Card 2: Cirurgia Peri-implantar -->
-                <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm space-y-3 hover:border-brand/40 transition">
-                    <div class="flex items-start gap-3">
-                        <div class="p-2.5 bg-brand-light text-brand rounded-xl text-xl">
-                            <i class="fa-solid fa-tooth"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-bold text-gray-900">Cirurgia Peri-implantar</h3>
-                            <p class="text-xs text-gray-600 mt-1 leading-relaxed">
-                                Atendimento e acompanhamento direcionado aos tecidos ao redor dos implantes dentários, visando saúde e longevidade, conforme avaliação profissional.
-                            </p>
-                        </div>
-                    </div>
-                    <button onclick="selectServiceWhatsApp('Cirurgia Peri-implantar')" 
-                            class="w-full py-2 px-3 bg-brand/10 hover:bg-brand hover:text-white text-brand font-semibold text-xs rounded-xl transition flex items-center justify-center gap-1.5">
-                        <i class="fa-brands fa-whatsapp text-sm"></i>
-                        <span>Tenho interesse</span>
-                    </button>
-                </div>
-
-                <!-- Card 3: Harmonização Orofacial -->
-                <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm space-y-3 hover:border-brand/40 transition">
-                    <div class="flex items-start gap-3">
-                        <div class="p-2.5 bg-brand-light text-brand rounded-xl text-xl">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-bold text-gray-900">Harmonização Orofacial</h3>
-                            <p class="text-xs text-gray-600 mt-1 leading-relaxed">
-                                Informações sobre os procedimentos oferecidos pela profissional para equilíbrio estético e funcional da face, mediante avaliação individualizada.
-                            </p>
-                        </div>
-                    </div>
-                    <button onclick="selectServiceWhatsApp('Harmonização Orofacial')" 
-                            class="w-full py-2 px-3 bg-brand/10 hover:bg-brand hover:text-white text-brand font-semibold text-xs rounded-xl transition flex items-center justify-center gap-1.5">
-                        <i class="fa-brands fa-whatsapp text-sm"></i>
-                        <span>Tenho interesse</span>
-                    </button>
-                </div>
-
-                <!-- Card 4: Avaliação Odontológica -->
-                <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm space-y-3 hover:border-brand/40 transition">
-                    <div class="flex items-start gap-3">
-                        <div class="p-2.5 bg-brand-light text-brand rounded-xl text-xl">
-                            <i class="fa-solid fa-notes-medical"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-bold text-gray-900">Avaliação Odontológica</h3>
-                            <p class="text-xs text-gray-600 mt-1 leading-relaxed">
-                                Primeiro contato para entender a necessidade do paciente, realizar diagnósticos preventivos e orientar sobre as melhores possibilidades de atendimento.
-                            </p>
-                        </div>
-                    </div>
-                    <button onclick="selectServiceWhatsApp('Avaliação Odontológica')" 
-                            class="w-full py-2 px-3 bg-brand/10 hover:bg-brand hover:text-white text-brand font-semibold text-xs rounded-xl transition flex items-center justify-center gap-1.5">
-                        <i class="fa-brands fa-whatsapp text-sm"></i>
-                        <span>Tenho interesse</span>
-                    </button>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- SEÇÃO 5: AUTORIDADE E APRESENTAÇÃO PROFISSIONAL -->
-        <section class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm space-y-4">
-            <div class="text-center space-y-2">
-                <span class="text-brand text-xs font-semibold uppercase tracking-wider">Atendimento Humanizado</span>
-                <h2 class="font-brand-serif text-lg font-bold text-gray-900 leading-tight">
-                    Cuidado, conhecimento e atenção individualizada.
-                </h2>
+        <!-- Informações Institucionais -->
+        <div class="mt-4 bg-amber-100/50 rounded-2xl border border-amber-200/80 p-4 text-center text-xs text-slate-700">
+            <p class="font-bold text-slate-900 text-sm mb-1" id="footerStoreName">Farmácia BIGMED</p>
+            <p class="mb-2" id="footerAddress">Av. Principal da Saúde, 1000 - Centro • Maceió - AL</p>
+            <div class="flex justify-center gap-3 text-slate-500 pt-2 border-t border-amber-200/60">
+                <span class="flex items-center gap-1"><i class="fa-solid fa-lock text-emerald-600"></i> Ambiente Seguro</span>
+                <span>•</span>
+                <span class="flex items-center gap-1"><i class="fa-solid fa-shield-cat text-amber-700"></i> LGPD em conformidade</span>
             </div>
-
-            <!-- Visual Composer Frame for Professional Photo -->
-            <div class="relative w-full h-48 rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center border border-gray-100 shadow-inner">
-                <img src="https://placehold.co/600x400/fdf2f4/d84268?text=Consultorio+Dra.+Josicleia+Rodrigues" 
-                     alt="Consultório Dra. Josicléia Rodrigues" 
-                     class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-3">
-                    <span class="text-white text-xs font-medium drop-shadow">Dra. Josicléia Rodrigues</span>
-                </div>
-            </div>
-
-            <!-- Bullet Credentials -->
-            <div class="space-y-2 pt-1 text-xs text-gray-700">
-                <div class="flex items-start gap-2.5">
-                    <div class="w-5 h-5 rounded-full bg-brand/10 text-brand flex items-center justify-center text-xs shrink-0 mt-0.5">
-                        <i class="fa-solid fa-check"></i>
-                    </div>
-                    <p><strong class="text-gray-900">Mestranda em Periodontia:</strong> Dedicação contínua ao estudo avançado da saúde dos tecidos periodontais.</p>
-                </div>
-
-                <div class="flex items-start gap-2.5">
-                    <div class="w-5 h-5 rounded-full bg-brand/10 text-brand flex items-center justify-center text-xs shrink-0 mt-0.5">
-                        <i class="fa-solid fa-check"></i>
-                    </div>
-                    <p><strong class="text-gray-900">Atuação em cirurgia peri-implantar:</strong> Procedimentos planejados para a saúde dos implantes dentários.</p>
-                </div>
-
-                <div class="flex items-start gap-2.5">
-                    <div class="w-5 h-5 rounded-full bg-brand/10 text-brand flex items-center justify-center text-xs shrink-0 mt-0.5">
-                        <i class="fa-solid fa-check"></i>
-                    </div>
-                    <p><strong class="text-gray-900">Pós-graduada em Harmonização Orofacial:</strong> Harmonização funcional e estética focada na naturalidade do paciente.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SEÇÃO 6: LOCALIZAÇÃO -->
-        <section class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm space-y-3 text-center">
-            <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 mx-auto flex items-center justify-center text-lg">
-                <i class="fa-solid fa-location-dot"></i>
-            </div>
-            
-            <div>
-                <h3 class="text-sm font-bold text-gray-900">Consultório Dra. Josicléia Rodrigues</h3>
-                <p class="text-xs text-gray-600 mt-0.5">
-                    São Miguel dos Milagres — AL
-                </p>
-                <p id="clinicAddressDisplay" class="text-[11px] text-gray-400 mt-1 italic">
-                    [Endereço completo disponível mediante confirmação de agendamento]
-                </p>
-            </div>
-
-            <button onclick="openGoogleMaps()" 
-                    class="w-full py-2.5 px-4 bg-gray-900 hover:bg-black text-white text-xs font-semibold rounded-xl transition flex items-center justify-center gap-2">
-                <i class="fa-solid fa-map-marked-alt text-brand"></i>
-                <span>Ver localização no mapa</span>
-            </button>
-        </section>
+        </div>
 
     </main>
 
-    <!-- SEÇÃO 7: RODAPÉ LGPD & LINKS -->
-    <footer class="w-full bg-white border-t border-gray-200 py-6 mt-6">
-        <div class="max-w-md mx-auto px-4 text-center space-y-3">
-            <div>
-                <p class="font-brand-serif text-sm font-bold text-gray-900">Dra. Josicléia Rodrigues</p>
-                <p class="text-xs text-gray-500">Consultório Odontológico — São Miguel dos Milagres — AL</p>
-            </div>
-
-            <!-- Social shortcuts -->
-            <div class="flex justify-center items-center gap-4 text-gray-600 pt-1">
-                <a href="#" onclick="openDirectWhatsApp('Olá! Vim através do site.'); return false;" 
-                   class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition"
-                   title="WhatsApp">
-                    <i class="fa-brands fa-whatsapp text-sm"></i>
-                </a>
-                <a href="#" onclick="openInstagramProfile(); return false;" 
-                   class="w-8 h-8 rounded-full bg-rose-50 text-brand flex items-center justify-center hover:bg-brand hover:text-white transition"
-                   title="Instagram">
-                    <i class="fa-brands fa-instagram text-sm"></i>
-                </a>
-            </div>
-
-            <!-- LGPD Statement -->
-            <div class="text-[10px] text-gray-400 leading-tight space-y-1 pt-2 border-t border-gray-100">
-                <p>Tratamento de dados pessoais realizado em estrita conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018).</p>
-                <button onclick="togglePrivacyModal(true)" class="underline hover:text-brand text-[10px]">
-                    Aviso de Privacidade e Termos
+    <div id="prescriptionModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white w-full max-w-md rounded-t-3xl sm:rounded-3xl p-6 shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto transform translate-y-full sm:translate-y-0 transition-transform duration-300">
+            
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-10 h-10 rounded-xl bg-red-100 text-red-600 flex items-center justify-center text-lg font-bold">
+                        <i class="fa-solid fa-file-medical"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-base leading-tight">Enviar Receita Médica</h3>
+                        <p class="text-xs text-slate-500">Atendimento farmacêutico seguro</p>
+                    </div>
+                </div>
+                <button onclick="closePrescriptionModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
 
-            <p class="text-[10px] text-gray-400">
-                &copy; <span id="currentYear"></span> Dra. Josicléia Rodrigues. Todos os direitos reservados.
-            </p>
-        </div>
-    </footer>
-
-    <!-- Floating WhatsApp Action Button (Discreet, Mobile-Friendly) -->
-    <div class="fixed bottom-4 right-4 z-40">
-        <button onclick="openDirectWhatsApp('Olá! Gostaria de falar com o consultório.');" 
-                class="w-13 h-13 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full shadow-lg flex items-center justify-center text-2xl transition duration-300 transform hover:scale-105 active:scale-95 p-3.5"
-                aria-label="Falar no WhatsApp">
-            <i class="fa-brands fa-whatsapp"></i>
-        </button>
-    </div>
-
-    <!-- Modal: Aviso de Privacidade (LGPD) -->
-    <div id="privacyModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-2xl max-w-sm w-full p-5 space-y-4 shadow-xl max-h-[80vh] overflow-y-auto">
-            <div class="flex items-center justify-between border-b pb-2">
-                <h3 class="text-sm font-bold text-gray-900 flex items-center gap-2">
-                    <i class="fa-solid fa-shield-halved text-brand"></i>
-                    Aviso de Privacidade
-                </h3>
-                <button onclick="togglePrivacyModal(false)" class="text-gray-400 hover:text-gray-700 text-lg">
-                    &times;
-                </button>
-            </div>
-            <div class="text-xs text-gray-600 space-y-2 leading-relaxed">
-                <p><strong>1. Coleta de Dados:</strong> O formulário desta página solicita apenas seu nome e interesse em atendimento para facilitar o direcionamento da sua mensagem ao WhatsApp oficial do consultório.</p>
-                <p><strong>2. Uso das Informações:</strong> As informações fornecidas não são salvas em bancos de dados externos nesta página. Elas são apenas formatadas em texto e enviadas pelo aplicativo de mensagem sob sua iniciativa.</p>
-                <p><strong>3. Direitos do Titular:</strong> Em conformidade com a LGPD (Lei nº 13.709/2018), você possui o direito de solicitar a exclusão ou confirmação do tratamento de seus dados a qualquer momento em contato com a equipe.</p>
-                <p><strong>4. Não Solicitação de Dados Sensíveis:</strong> Não solicitamos fotos, históricos de diagnósticos ou documentos pessoais nesta página inicial.</p>
-            </div>
-            <button onclick="togglePrivacyModal(false)" class="w-full py-2 bg-brand text-white font-medium text-xs rounded-xl">
-                Compreendido
-            </button>
-        </div>
-    </div>
-
-    <!-- JAVASCRIPT APP LOGIC & CONFIGURATION -->
-    <script>
-        /* ==========================================================================
-           CONFIGURAÇÕES DA CLÍNICA (PENDENTES DE PREENCHIMENTO OFICIAL SE NECESSÁRIO)
-           ========================================================================== */
-        const CLINIC_CONFIG = {
-            // Número oficial do WhatsApp no formato internacional com DDD
-            whatsappNumber: "5582996402650", 
-
-            // Nome de usuário do Instagram oficial
-            instagramUsername: "dra.josicleiarodrigues",
-
-            // Link oficial do Google Maps ou busca da localização em São Miguel dos Milagres - AL
-            googleMapsUrl: "https://maps.google.com/?q=São+Miguel+dos+Milagres+AL",
-
-            // Endereço completo formatado (deixar pendente caso não seja público)
-            fullAddress: "São Miguel dos Milagres — AL (Atendimento mediante agendamento)"
-        };
-
-        /* ==========================================================================
-           VARIÁVEIS DE ESTADO E FORMULÁRIO
-           ========================================================================== */
-        let currentStep = 1;
-        const formData = {
-            patientName: '',
-            serviceInterest: '',
-            contactGoal: ''
-        };
-
-        // Atualizar ano do footer automaticamente
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        /* ==========================================================================
-           NAVEGAÇÃO ENTRE ETAPAS DO FORMULÁRIO
-           ========================================================================== */
-        function updateProgressBar(step) {
-            const progressBar = document.getElementById('progressBar');
-            if (step === 1) progressBar.style.width = '33%';
-            if (step === 2) progressBar.style.width = '66%';
-            if (step === 3) progressBar.style.width = '100%';
-        }
-
-        function highlightOption(radioElement) {
-            // Remover seleção de todos no mesmo grupo
-            const groupName = radioElement.name;
-            const radios = document.getElementsByName(groupName);
-
-            radios.forEach(radio => {
-                const parentLabel = radio.closest('.option-card');
-                const checkIcon = parentLabel.querySelector('.check-icon');
-                if (parentLabel) {
-                    parentLabel.classList.remove('selected');
-                    if (checkIcon) {
-                        checkIcon.className = "fa-regular fa-circle text-gray-300 check-icon";
-                    }
-                }
-            });
-
-            // Adicionar destaque no selecionado
-            if (radioElement.checked) {
-                const selectedLabel = radioElement.closest('.option-card');
-                const selectedIcon = selectedLabel.querySelector('.check-icon');
-                if (selectedLabel) {
-                    selectedLabel.classList.add('selected');
-                    if (selectedIcon) {
-                        selectedIcon.className = "fa-solid fa-circle-check text-brand check-icon";
-                    }
-                }
-            }
-        }
-
-        function nextStep(fromStep) {
-            if (fromStep === 1) {
-                const nameInput = document.getElementById('patientName');
-                const nameError = document.getElementById('nameError');
+            <!-- Modal Content & Steps -->
+            <div class="space-y-4">
                 
-                if (!nameInput.value.trim()) {
-                    nameError.classList.remove('hidden');
-                    nameInput.focus();
-                    return;
-                }
-                nameError.classList.add('hidden');
-                formData.patientName = nameInput.value.trim();
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Selecione o arquivo da sua receita médica (imagem ou PDF) para verificar tamanho e validade antes de solicitar a cotação no WhatsApp.
+                </p>
 
-                document.getElementById('step1').classList.add('hidden');
-                document.getElementById('step2').classList.remove('hidden');
-                currentStep = 2;
-            } else if (fromStep === 2) {
-                const selectedService = document.querySelector('input[name="serviceInterest"]:checked');
-                const serviceError = document.getElementById('serviceError');
+                <!-- File Input Dropzone -->
+                <div id="dropzone" class="border-2 border-dashed border-slate-300 hover:border-red-400 bg-slate-50/50 hover:bg-red-50/20 rounded-2xl p-5 text-center transition-all cursor-pointer relative">
+                    <input type="file" id="recipeFileInput" accept=".pdf,.jpg,.jpeg,.png" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onchange="handleFileSelect(event)">
+                    
+                    <div id="dropzoneEmpty" class="space-y-2">
+                        <div class="w-12 h-12 rounded-full bg-red-100 text-red-600 flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                        </div>
+                        <div class="text-xs font-semibold text-slate-800">Clique ou arraste a receita aqui</div>
+                        <div class="text-[11px] text-slate-400">Formatos: PDF, JPG, PNG (Até 10 MB)</div>
+                    </div>
 
-                if (!selectedService) {
-                    serviceError.classList.remove('hidden');
-                    return;
-                }
-                serviceError.classList.add('hidden');
-                formData.serviceInterest = selectedService.value;
+                    <!-- File Details Container (Hidden by default) -->
+                    <div id="fileSelectedDetails" class="hidden text-left bg-white p-3 rounded-xl border border-emerald-200 shadow-xs space-y-2">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2 overflow-hidden">
+                                <i id="fileTypeIcon" class="fa-solid fa-file-pdf text-red-500 text-lg shrink-0"></i>
+                                <div class="truncate">
+                                    <div id="fileNameText" class="text-xs font-bold text-slate-800 truncate">receita.pdf</div>
+                                    <div id="fileSizeText" class="text-[10px] text-slate-400">1.2 MB</div>
+                                </div>
+                            </div>
+                            <button onclick="removeSelectedFile(event)" class="text-xs text-red-600 hover:text-red-800 font-medium px-2 py-1 rounded bg-red-50">
+                                Remover
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
-                document.getElementById('step2').classList.add('hidden');
-                document.getElementById('step3').classList.remove('hidden');
-                currentStep = 3;
-            }
+                <!-- Error alert message -->
+                <div id="validationError" class="hidden p-3 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700 flex items-center gap-2">
+                    <i class="fa-solid fa-circle-exclamation shrink-0 text-red-500"></i>
+                    <span id="errorMessage">Formato de arquivo inválido.</span>
+                </div>
 
-            updateProgressBar(currentStep);
+                <!-- Orientação LGPD / Importante -->
+                <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl text-[11px] text-amber-900 leading-relaxed flex gap-2.5">
+                    <i class="fa-solid fa-shield-halved text-amber-600 text-sm shrink-0 mt-0.5"></i>
+                    <div>
+                        <strong>Aviso de Privacidade:</strong>
+                        Ao avançar, seu WhatsApp será aberto. Por questões de segurança do navegador, você deverá <span class="underline font-semibold">anexar a receita selecionada na própria conversa</span> do aplicativo.
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="pt-2 flex flex-col gap-2">
+                    <button id="btnContinueWhatsApp" onclick="proceedToWhatsApp()" disabled class="w-full bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-bold py-3.5 px-4 rounded-xl shadow-md flex items-center justify-center gap-2 transition-all">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Continuar para o WhatsApp</span>
+                    </button>
+                    <button onclick="closePrescriptionModal()" class="w-full py-2 text-xs text-slate-500 hover:text-slate-800 font-medium text-center">
+                        Cancelar
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <a id="floatingWhatsapp" href="#" target="_blank" aria-label="Falar com a Farmácia BIGMED pelo WhatsApp" class="fixed bottom-5 right-5 z-40 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-2xl transition-transform duration-300 hover:scale-110 active:scale-95 border-2 border-white pulse-subtle">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // State management
+        let selectedFile = null;
+
+        // On DOM Content Loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeConfig();
+        });
+
+        // Initialize user configurables into HTML elements
+        function initializeConfig() {
+            const cfg = window.BIGMED_CONFIG;
+
+            // Header elements
+            document.getElementById('headerSubtitle').innerText = cfg.subtitulo;
+            document.getElementById('instaHandle').innerText = cfg.instagram;
+            document.getElementById('phoneText').innerText = cfg.telefoneFixo;
+            
+            // Footer elements
+            document.getElementById('footerStoreName').innerText = cfg.nome;
+            document.getElementById('footerAddress').innerText = `${cfg.endereco} • ${cfg.cidade}`;
+
+            // WhatsApp Direct URL
+            const defaultMsg = encodeURIComponent(`Olá! Vim pelo Instagram da ${cfg.nome} e gostaria de informações.`);
+            const waUrl = `https://wa.me/${cfg.whatsappPhone}?text=${defaultMsg}`;
+            
+            document.getElementById('btnWhatsapp').href = waUrl;
+            document.getElementById('floatingWhatsapp').href = waUrl;
+
+            // Disponibilidade URL
+            const dispMsg = encodeURIComponent(`Olá! Gostaria de consultar a disponibilidade de um medicamento.`);
+            document.getElementById('btnDisponibilidade').href = `https://wa.me/${cfg.whatsappPhone}?text=${dispMsg}`;
+
+            // Google Maps
+            document.getElementById('btnMaps').href = cfg.mapsUrl;
+
+            // Call link
+            document.getElementById('btnCall').href = `tel:${cfg.telefoneFixo.replace(/\D/g, '')}`;
+
+            // Instagram link
+            document.getElementById('btnInstagram').href = `https://instagram.com/${cfg.instagram.replace('@', '')}`;
         }
 
-        function prevStep(fromStep) {
-            if (fromStep === 2) {
-                document.getElementById('step2').classList.add('hidden');
-                document.getElementById('step1').classList.remove('hidden');
-                currentStep = 1;
-            } else if (fromStep === 3) {
-                document.getElementById('step3').classList.add('hidden');
-                document.getElementById('step2').classList.remove('hidden');
-                currentStep = 2;
-            }
-            updateProgressBar(currentStep);
+        // Modal Controls
+        function openPrescriptionModal() {
+            const modal = document.getElementById('prescriptionModal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.remove('translate-y-full');
         }
 
-        /* ==========================================================================
-           ENVIO DO FORMULÁRIO E MONTAGEM DA MENSAGEM DO WHATSAPP
-           ========================================================================== */
-        function submitLeadForm() {
-            const selectedGoal = document.querySelector('input[name="contactGoal"]:checked');
-            const goalError = document.getElementById('goalError');
-            const lgpdConsent = document.getElementById('lgpdConsent');
-            const lgpdError = document.getElementById('lgpdError');
+        function closePrescriptionModal() {
+            const modal = document.getElementById('prescriptionModal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.add('translate-y-full');
+            // Delay clear to avoid visual layout jump
+            setTimeout(resetFileInput, 300);
+        }
 
-            let isValid = true;
+        // File Selection Logic & Validation
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            const errorDiv = document.getElementById('validationError');
+            const errorMsg = document.getElementById('errorMessage');
+            
+            errorDiv.classList.add('hidden');
 
-            if (!selectedGoal) {
-                goalError.classList.remove('hidden');
-                isValid = false;
+            if (!file) return;
+
+            // Max size validation (10 MB default)
+            const maxMB = window.BIGMED_CONFIG.maxFileSizeMB || 10;
+            if (file.size > maxMB * 1024 * 1024) {
+                showValidationError(`O arquivo excede o limite máximo permitido de ${maxMB} MB.`);
+                resetFileInput();
+                return;
+            }
+
+            // Allowed MIME types / Extensions
+            const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png', 'image/jpg'];
+            if (!allowedTypes.includes(file.type)) {
+                showValidationError('Formato inválido. Por favor envie um arquivo PDF, JPG ou PNG.');
+                resetFileInput();
+                return;
+            }
+
+            // Success validation
+            selectedFile = file;
+
+            // Update UI details
+            document.getElementById('dropzoneEmpty').classList.add('hidden');
+            document.getElementById('fileSelectedDetails').classList.remove('hidden');
+            
+            document.getElementById('fileNameText').innerText = file.name;
+            document.getElementById('fileSizeText').innerText = formatBytes(file.size);
+
+            // Icon by type
+            const iconEl = document.getElementById('fileTypeIcon');
+            if (file.type.includes('pdf')) {
+                iconEl.className = 'fa-solid fa-file-pdf text-red-500 text-xl shrink-0';
             } else {
-                goalError.classList.add('hidden');
-                formData.contactGoal = selectedGoal.value;
+                iconEl.className = 'fa-solid fa-file-image text-emerald-500 text-xl shrink-0';
             }
 
-            if (!lgpdConsent.checked) {
-                lgpdError.classList.remove('hidden');
-                isValid = false;
-            } else {
-                lgpdError.classList.add('hidden');
-            }
-
-            if (!isValid) return;
-
-            // Montagem da mensagem personalizada sem inventar horários ou diagnósticos
-            const message = `Olá! Meu nome é *${formData.patientName}*.\n\n` +
-                            `Gostaria de informações sobre: *${formData.serviceInterest}*.\n` +
-                            `Objetivo do meu contato: *${formData.contactGoal}*.\n\n` +
-                            `Vim através da sua página no Instagram. Como podemos dar segmento?`;
-
-            openWhatsAppWithMessage(message);
+            // Enable Continue Button
+            document.getElementById('btnContinueWhatsApp').disabled = false;
         }
 
-        /* ==========================================================================
-           AÇÕES RÁPIDAS E ENCAMINHAMENTOS
-           ========================================================================== */
-        function selectServiceWhatsApp(serviceName) {
-            const message = `Olá! Tenho interesse no atendimento de *${serviceName}* com a Dra. Josicléia Rodrigues. Gostaria de mais informações.`;
-            openWhatsAppWithMessage(message);
+        function removeSelectedFile(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            resetFileInput();
         }
 
-        function openDirectWhatsApp(customMessage) {
-            openWhatsAppWithMessage(customMessage);
+        function resetFileInput() {
+            selectedFile = null;
+            document.getElementById('recipeFileInput').value = '';
+            document.getElementById('dropzoneEmpty').classList.remove('hidden');
+            document.getElementById('fileSelectedDetails').classList.add('hidden');
+            document.getElementById('btnContinueWhatsApp').disabled = true;
+            document.getElementById('validationError').classList.add('hidden');
         }
 
-        function openWhatsAppWithMessage(text) {
-            const encodedText = encodeURIComponent(text);
-            const waUrl = `https://wa.me/${CLINIC_CONFIG.whatsappNumber}?text=${encodedText}`;
+        function showValidationError(message) {
+            const errorDiv = document.getElementById('validationError');
+            const errorMsg = document.getElementById('errorMessage');
+            errorMsg.innerText = message;
+            errorDiv.classList.remove('hidden');
+        }
+
+        function formatBytes(bytes, decimals = 1) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const dm = decimals < 0 ? 0 : decimals;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+        }
+
+        // WhatsApp Option A flow execution
+        function proceedToWhatsApp() {
+            if (!selectedFile) return;
+
+            const cfg = window.BIGMED_CONFIG;
+            
+            // Standard pre-filled WhatsApp message as per prompt spec
+            const message = `Olá! Acessei a página da farmácia e gostaria de receber orientações sobre o envio da minha receita médica (${selectedFile.name}). Poderiam me informar o procedimento adequado?`;
+            
+            const encodedMsg = encodeURIComponent(message);
+            const waUrl = `https://wa.me/${cfg.whatsappPhone}?text=${encodedMsg}`;
+
+            // Open WhatsApp in new tab
             window.open(waUrl, '_blank');
-        }
 
-        function openInstagramProfile() {
-            const url = `https://instagram.com/${CLINIC_CONFIG.instagramUsername}`;
-            window.open(url, '_blank');
-        }
-
-        function openGoogleMaps() {
-            window.open(CLINIC_CONFIG.googleMapsUrl, '_blank');
-        }
-
-        function togglePrivacyModal(show) {
-            const modal = document.getElementById('privacyModal');
-            if (show) {
-                modal.classList.remove('hidden');
-            } else {
-                modal.classList.add('hidden');
-            }
+            // Close modal after redirection
+            closePrescriptionModal();
         }
     </script>
 </body>
